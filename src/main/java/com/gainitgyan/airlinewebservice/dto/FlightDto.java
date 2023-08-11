@@ -4,14 +4,26 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.gainitgyan.airlinewebservice.validation.FlightMfdBy;
+
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.PositiveOrZero;
 
 
 public class FlightDto {
 
 	private Integer id;
+	@NotNull
 	private String flightNumber;
+	@NotNull
+	@PositiveOrZero
 	private Integer capacity;
+	@NotNull
+	@FlightMfdBy
 	private String mfdBy;
+	@NotNull
+	@PastOrPresent
 	@JsonFormat(pattern = "MM/dd/yyyy")
 	private LocalDate mfdOn;
 	public Integer getId() {
